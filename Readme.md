@@ -89,38 +89,62 @@ Copy code
 
 ## 📦 Project Structure
 
-src/main/java/com/example/userservice
+📦 springboot-jwt-user-management-service
 │
-├── config
-│ ├── DataInitializer.java
-│ ├── SecurityConfig.java
-│ ├── JwtAuthenticationFilter.java
-│ └── JwtAuthEntryPoint.java
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── com
+│   │   │       └── example
+│   │   │           └── userservice
+│   │   │               ├── UserServiceApplication.java
+│   │   │               │
+│   │   │               ├── config
+│   │   │               │   ├── DataInitializer.java
+│   │   │               │   ├── SecurityConfig.java
+│   │   │               │   ├── JwtAuthenticationFilter.java
+│   │   │               │   └── JwtAuthEntryPoint.java
+│   │   │               │
+│   │   │               ├── controller
+│   │   │               │   ├── AuthController.java
+│   │   │               │   └── UserController.java
+│   │   │               │
+│   │   │               ├── dto
+│   │   │               │   ├── ApiResponse.java
+│   │   │               │   ├── LoginRequest.java
+│   │   │               │   ├── RegisterRequest.java
+│   │   │               │   └── JwtResponse.java
+│   │   │               │
+│   │   │               ├── model
+│   │   │               │   ├── User.java
+│   │   │               │   └── Role.java
+│   │   │               │
+│   │   │               ├── repository
+│   │   │               │   ├── UserRepository.java
+│   │   │               │   └── RoleRepository.java
+│   │   │               │
+│   │   │               ├── service
+│   │   │               │   ├── AuthService.java
+│   │   │               │   └── UserService.java
+│   │   │               │
+│   │   │               └── util
+│   │   │                   └── JwtTokenProvider.java
+│   │   │
+│   │   └── resources
+│   │       ├── application.yml
+│   │       └── data.sql
+│   │
+│   └── test
+│       └── java
+│           └── com
+│               └── example
+│                   └── userservice
+│                       ├── AuthServiceTest.java
+│                       ├── AuthControllerTest.java
+│                       └── UserControllerTest.java
 │
-├── controller
-│ ├── AuthController.java
-│ └── UserController.java
-│
-├── dto
-│ ├── LoginRequest.java
-│ ├── RegisterRequest.java
-│ ├── ApiResponse.java
-│ └── JwtResponse.java
-│
-├── model
-│ ├── User.java
-│ └── Role.java
-│
-├── repository
-│ ├── UserRepository.java
-│ └── RoleRepository.java
-│
-├── service
-│ ├── AuthService.java
-│ └── UserService.java
-│
-└── util
-└── JwtTokenProvider.java
+├── pom.xml
+└── README.md
 
 yaml
 Copy code
