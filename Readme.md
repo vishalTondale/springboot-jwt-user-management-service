@@ -89,6 +89,7 @@ Copy code
 
 ## 📦 Project Structure
 
+```
 📦 springboot-jwt-user-management-service
 │
 ├── src
@@ -145,7 +146,7 @@ Copy code
 │
 ├── pom.xml
 └── README.md
-
+```
 yaml
 Copy code
 
