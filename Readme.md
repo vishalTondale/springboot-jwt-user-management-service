@@ -1,9 +1,9 @@
 # Spring Boot JWT User Management Service
 
 A complete production-ready **User Authentication & Management Service** built using  
-**Spring Boot 4, Java 21, JWT, Spring Security, H2 Database, JPA, Validation & Role-Based Access Control (RBAC)**.
+**Spring Boot 4, Java 21, JWT, Spring Security, Postgrees Database, JPA, Validation & Role-Based Access Control (RBAC)**.
 
-This project was developed as part of a hiring assignment and demonstrates backend development skills including:
+This project demonstrates backend development skills including:
 - Authentication (Login + Register)
 - JWT-based Authorization
 - RBAC (USER, ADMIN)
@@ -25,7 +25,7 @@ This project was developed as part of a hiring assignment and demonstrates backe
 ### ✅ Authorization
 - JWT Token Validation
 - Secured Endpoints
-- Role-based access control (USER & ADMIN)
+- Role-based access control (USER_ROLE & ADMIN_ROLE)
 
 ### ✅ User Management
 - Fetch all users (ADMIN only)
@@ -38,7 +38,7 @@ This project was developed as part of a hiring assignment and demonstrates backe
 - Custom `JwtAuthenticationFilter`  
 
 ### ✅ Database
-- In-memory H2 DB for assignment  
+- PostgreSQL from render and setup for In-memory H2 DB as well
 - Auto schema creation  
 - Default ADMIN auto-created at startup  
 
@@ -46,8 +46,7 @@ This project was developed as part of a hiring assignment and demonstrates backe
 email: admin@example.com
 password: Admin@123
 
-yaml
-Copy code
+
 
 ---
 
@@ -55,11 +54,11 @@ Copy code
 
 | Layer | Technology |
 |------|------------|
-| Language | Java 21 |
+| Language | Java 17 |
 | Framework | Spring Boot 4 |
 | Security | Spring Security + JWT |
 | ORM | JPA + Hibernate |
-| Database | H2 (Memory DB) |
+| Database | PostgreSQL | H2 (Memory DB) |
 | Validation | Jakarta Validation |
 | Build Tool | Maven |
 
@@ -74,6 +73,7 @@ Copy code
 | POST | `/register` | Register a new user |
 | POST | `/login` | Login and receive JWT |
 | GET | `/me` | Get logged-in user profile |
+| GET | `/users` | Get all user details |
 
 ---
 
@@ -137,53 +137,90 @@ Copy code
 │   │
 │   └── test
 │       └── java
-│           └── com
-│               └── example
-│                   └── userservice
-│                       ├── AuthServiceTest.java
-│                       ├── AuthControllerTest.java
-│                       └── UserControllerTest.java
+│           
 │
 ├── pom.xml
 └── README.md
+├── DockerFile
 ```
-yaml
-Copy code
+
 
 ---
 
-## 🧪 Testing
 
-This project includes:
-- Unit Tests  
-- Integration Tests  
+## Notes
+   -  If you are checking the service i hosted on render it will take 1-2 minute os time to start the backend because i have hosted it as a free service so wait till it provide response.
+   -  Use Postman or Thunder Client for testing.
+   -  Tokens expire depending on configuration.
+   - Make sure to send JSON format and correct Authorization header.
 
-(See `src/test/java/...`)  
+## ▶️ Run  these  render hosted backend on postmen directly using 
+Base url 
+  : https://springboot-jwt-user-management-service.onrender.com
+  
 
-Run tests using:
-mvn test
+Register User using:
+ POST 
+ url :  https://springboot-jwt-user-management-service.onrender.com/api/auth/register
 
-yaml
-Copy code
+ example of body :
+    {
+    "email": "test1@example.com",
+    "password": "password123"
+    }
 
----
+For Login use :
+ POST 
+ url :  https://springboot-jwt-user-management-service.onrender.com/api/auth/login
+ 
+ example of body :
+ {
+  "email": "test1@example.com",
+  "password": "password123"
+ }
 
-## ▶️ Run Locally
+Fetch Logged-in User Details using :
+ GET 
+ url :  https://springboot-jwt-user-management-service.onrender.com/api/auth/me
+
+example of body :
+ select Authorization as Bearer  and use the jwt token which has generated through login.
+
+for Admin Login use credentials as :
+ {
+  "email": "admin@example.com",
+  "password": "Admin@123"
+}
+
+
+Fetch All Users using :
+ GET 
+ url :  https://springboot-jwt-user-management-service.onrender.com/api/users
+ example :
+ select Authorization as Bearer  and use the jwt token which has generated through login.
+
+  (it will provide user details only if you login as a Admin or else it will shoe an access denied error message)
+
+Delete User by using : (only for Admin)
+url :  https://springboot-jwt-user-management-service.onrender.com/api/users/{id}
+ example of body :
+ select Authorization as Bearer  and use the jwt token which has generated through login.
+
+
+
+
+
+
+
+## ▶️ Run Locally by this commands
 
 mvn clean install
 mvn spring-boot:run
 
-yaml
-Copy code
 
 App runs on:  
 👉 `http://localhost:8080`
 
 ---
 
-
-
-
-## 📝 License
-This project is created for  evaluation and educational use.
 
