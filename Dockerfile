@@ -31,4 +31,5 @@ ENV SERVER_PORT=10000
 ENV PORT=10000
 
 # Start the application
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["sh", "-c", "java -jar app.jar"]
+
