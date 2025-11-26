@@ -57,10 +57,18 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
+		<!-- add PostgreSQL driver -->
 		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<scope>runtime</scope>
+	 	   <groupId>org.postgresql</groupId>
+	 	   <artifactId>postgresql</artifactId>
+	 	   <version>42.6.0</version> <!-- or latest stable -->
+		</dependency>
+	
+		<!-- (optional) keep H2 only for tests -->
+		<dependency>
+		    <groupId>com.h2database</groupId>
+		    <artifactId>h2</artifactId>
+	 	   <scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>

@@ -1,4 +1,4 @@
-package com.example.userservice.payload;
+package com.example.userservice.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
